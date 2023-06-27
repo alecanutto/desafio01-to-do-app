@@ -9,10 +9,10 @@ export interface ITask {
 }
 
 function App() {
-  const [tasks, setTaks] = useState<ITask[]>([]);
+  const [tasks, setTasks] = useState<ITask[]>([]);
 
   const addTask = (taskTitle: string) => {
-    setTaks([
+    setTasks([
       ...tasks,
       {
         id: crypto.randomUUID(),
@@ -24,13 +24,26 @@ function App() {
 
   const deleteTaskById= (taskId: string) => {
     const newTasks = tasks.filter(task => task.id !== taskId);
-    setTaks(newTasks);
+    setTasks(newTasks);
+  }
+
+  const toggleTaskCompletedByID = (taskId: string) => {
+    const newTasks = tasks.map(task => {
+      if (task.id === taskId) {
+        return {
+          ...task,
+          isCompleted: !task.isCompleted
+        }
+      }
+      return task;
+    })
+    setTasks(newTasks);
   }
 
   return (
     <>
       <Header onAddTask={addTask} />
-      <Tasks tasks={tasks} onDelete={deleteTaskById} />
+      <Tasks tasks={tasks} onDelete={deleteTaskById} onComplete={toggleTaskCompletedByID} />
     </>
   );
 }
