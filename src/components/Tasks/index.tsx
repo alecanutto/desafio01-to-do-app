@@ -1,3 +1,4 @@
+import { Task } from '../Task';
 import styles from './tasks.module.css';
 
 export const Tasks = () => {
@@ -13,6 +14,10 @@ export const Tasks = () => {
           <span>2 de 10</span>
         </div>
       </header>
+      <div className={styles.taskList}>
+        <Task />
+        <Task />
+      </div>
     </section>
   );
 };
