@@ -4,9 +4,10 @@ import styles from './tasks.module.css';
 
 interface Props {
   tasks: ITask[];
+  onDelete: (taskId: string) => void;
 }
 
-export const Tasks = ({ tasks }: Props) => {
+export const Tasks = ({ tasks, onDelete }: Props) => {
   const tasksQuantity = tasks.length;
   const completedTasks = tasks.filter(task => task.isCompleted).length;
 
@@ -24,7 +25,7 @@ export const Tasks = ({ tasks }: Props) => {
       </header>
       <div className={styles.taskList}>
         {tasks.map((task) => (
-          <Task key={task.id} task={task} />
+          <Task key={task.id} task={task} onDelete={onDelete} />
         ))}
       </div>
     </section>

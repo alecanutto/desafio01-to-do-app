@@ -10,20 +10,27 @@ export interface ITask {
 
 function App() {
   const [tasks, setTaks] = useState<ITask[]>([]);
-   
-   
-   const addTask = (taskTitle: string) => {
-      setTaks([...tasks, {
-         id: crypto.randomUUID(),
-         title: taskTitle,
-         isCompleted: false,
-      }]);
-   }
+
+  const addTask = (taskTitle: string) => {
+    setTaks([
+      ...tasks,
+      {
+        id: crypto.randomUUID(),
+        title: taskTitle,
+        isCompleted: false,
+      },
+    ]);
+  };
+
+  const deleteTaskById= (taskId: string) => {
+    const newTasks = tasks.filter(task => task.id !== taskId);
+    setTaks(newTasks);
+  }
 
   return (
     <>
-        <Header onAddTask={addTask} />
-      <Tasks tasks={tasks} />
+      <Header onAddTask={addTask} />
+      <Tasks tasks={tasks} onDelete={deleteTaskById} />
     </>
   );
 }
