@@ -14,19 +14,24 @@ export const Header = ({ onAddTask }: Props) => {
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault();
     onAddTask(title);
-    setTitle("");
+    setTitle('');
   };
 
   const onChangeTitle = (event: ChangeEvent<HTMLInputElement>) => {
     setTitle(event.target.value);
-  } 
+  };
 
   return (
     <header className={styles.header}>
       <img src={todoLogo} />
 
       <form className={styles.newTaskForm} onSubmit={handleSubmit}>
-        <input type="text" placeholder="Adicione uma nova tarefa" onChange={onChangeTitle} value={title} />
+        <input
+          type="text"
+          placeholder="Adicione uma nova tarefa"
+          onChange={onChangeTitle}
+          value={title}
+        />
         <button>
           Criar
           <PlusCircle size={20} />
