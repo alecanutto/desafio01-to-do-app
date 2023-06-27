@@ -1,5 +1,7 @@
 # ToDo App
 
+## Desafio da trilha de ReactJS do Ignite
+
 ### Desafio 01 - Praticando os conceitos do ReactJS
 
 Aplicação de controle de tarefas no estilo **to-do list**, que contém as seguintes funcionalidades:
